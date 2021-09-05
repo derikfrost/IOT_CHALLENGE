@@ -28,6 +28,9 @@ digitalWrite(ledPin, LOW); // set the LED off.
 delay(1000); // wait for a second
 }
 ```
+Result
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aad3VFreHxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 ***
@@ -81,6 +84,10 @@ digitalWrite(redled, LOW);// turn off red LED
 }
 ```
 
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vWrNEMp6SrY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ---
 ## Experiment 3
@@ -124,9 +131,13 @@ void loop()
 }
 ```
 
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qvoKrumxAIk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ---
-## Experiment 3
+## Experiment 4
 ### Button Controlled LED
 
 
@@ -165,6 +176,10 @@ else
 }
 ```
 
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NFxV2qFHjZs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ---
 ## Experiment 5
@@ -193,6 +208,12 @@ void loop()
 digitalWrite(buzzer, HIGH); // produce sound
 }
 ```
+
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/26S82Y2klrE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ***
 ## Experiment 6
 ### RGB LED
@@ -268,8 +289,15 @@ void loop() {
    
    Serial.println( digitalRead( ldr_pin ));
    delay(100);
+   }}
    ```
-   ****
+   
+   Result
+   
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/lg68d2hGDpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   
+   
+   ***
    
    ## EXperiment 8
    ### Flame Sensor
@@ -311,6 +339,10 @@ void loop()
    delay(500); 
 }
 ```
+
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D5oHJKS3cOo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ***
 ## Experiment 9
@@ -428,6 +460,8 @@ Serial.println(val);// display val’s value
 }
 ```
 **Result**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Jbzz3Oq8t-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ***
 ## Experiment 12
@@ -591,6 +625,8 @@ delay(1000); // wait for 1s
 ```
 Result
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fpsjQ7hmxh4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ***
 
 ## Assignments
@@ -720,6 +756,12 @@ case 5:
 }
 ```
 
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OEm2LbqdDDI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 ***
 ### Assignment 1
 
@@ -765,6 +807,12 @@ void loop() {
   }
 }
 ```
+
+Result
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o9gz5S1LRHQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+***
 
 
 
