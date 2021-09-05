@@ -593,4 +593,181 @@ Result
 
 ***
 
-## **Assignments**
+## Assignments
+### Assignment 2
+
+Digital Dice Using 7 Segment Display and Push Button
+
+Components Required 
+
+1. Arduino Uno Board*1
+2. 1-digit LED Segment Display(common cathode)*1
+3. 220Ω Resistor*6
+4. Breadboard*1
+5. Breadboard Jumper Wires *several
+6. USB cable*1
+7. Push button*1
+8. 10k resistor*1
+
+
+Circuit Diagram
+
+![7seg](https://user-images.githubusercontent.com/77291059/132133597-b6fad7f8-64e7-401d-aea4-095746c932fb.png)
+
+Code
+
+```arduino
+int f = 5;
+int g = 6;
+int e = 7;
+int d = 8;
+int c = 9;
+int b = 11;
+int a = 12;  //7 Segment pin
+
+int buttonPin=13;
+int buttonState=0;
+int state=0;
+  
+
+void setup() {
+
+  pinMode(f, OUTPUT);
+  pinMode(g, OUTPUT);
+  pinMode(e, OUTPUT);
+  pinMode(d, OUTPUT);
+  pinMode(c, OUTPUT);
+  pinMode(b, OUTPUT);
+  pinMode(a, OUTPUT);
+  pinMode(buttonPin,INPUT);
+
+}
+
+void loop() 
+{
+ buttonState=digitalRead(buttonPin);
+ if (buttonState == HIGH){
+ state = random(1,7); // take random values from 1 to 6
+ switch(state){
+ 
+ case 1:
+ digitalWrite(a,0); 
+ digitalWrite(b,1);  
+ digitalWrite(c,1);  
+ digitalWrite(d,0);  
+ digitalWrite(e,0);  
+ digitalWrite(f,0);  
+ digitalWrite(g,0);   // 1
+ 
+ break;
+ 
+ case 2:  
+ digitalWrite(a,1); 
+ digitalWrite(b,1);  
+ digitalWrite(c,0);  
+ digitalWrite(d,1);  
+ digitalWrite(e,1);  
+ digitalWrite(f,0);  
+ digitalWrite(g,1);   // 2
+
+ break;
+ 
+ case 3:
+ digitalWrite(a,1); 
+ digitalWrite(b,1);  
+ digitalWrite(c,1);  
+ digitalWrite(d,1);  
+ digitalWrite(e,0);  
+ digitalWrite(f,0);  
+ digitalWrite(g,1);   // 3
+
+ break;
+  
+case 4: 
+ digitalWrite(a,0); 
+ digitalWrite(b,1);  
+ digitalWrite(c,1);  
+ digitalWrite(d,0);  
+ digitalWrite(e,0);  
+ digitalWrite(f,1);  
+ digitalWrite(g,1);   // 4
+  
+  break;
+    
+case 5:
+ digitalWrite(a,1); 
+ digitalWrite(b,0);  
+ digitalWrite(c,1);  
+ digitalWrite(d,1);  
+ digitalWrite(e,0);  
+ digitalWrite(f,1);  
+ digitalWrite(g,1);   // 5
+
+  break;
+  
+ case 6: 
+ digitalWrite(a,1); 
+ digitalWrite(b,0);  
+ digitalWrite(c,1);  
+ digitalWrite(d,1);  
+ digitalWrite(e,1);  
+ digitalWrite(f,1);  
+ digitalWrite(g,1);   // 6
+
+  break;
+ }             
+}
+}
+```
+
+***
+### Assignment 1
+
+Automatic Night Lamp Model Using LDR and LED
+
+Components Required
+1. Arduino Uno Board*1
+2. LM35*1
+3. Breadboard*1
+4. USB cable*1
+5. LED(10mm)*3
+
+
+Code 
+
+```arduino
+const int LEDpin = 13;  
+const int ldrPin = A0;  
+
+
+void setup() {
+
+  Serial.begin(9600);
+  pinMode(LEDpin, OUTPUT); 
+  pinMode(ldrPin, INPUT);   
+}
+
+void loop() {
+
+  int ldrStatus = analogRead(ldrPin);  
+  
+
+   if (ldrStatus <=400) {
+
+    digitalWrite(LEDpin, LOW);               
+    Serial.println("LDR is DARK, LED is ON");
+    
+   }
+  else {
+
+    digitalWrite(LEDpin, HIGH);         
+    Serial.println("---------------");
+  }
+}
+```
+
+
+
+
+
+
