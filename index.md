@@ -411,8 +411,8 @@ Components Required
 
 1. Infrared Remote Controller(You can use TV Remote or any other remote) *1
 2. Infrared Receiver *1
-3. LED *6
-4. 220ΩResistor *6
+3. LED *3
+4. 220ΩResistor *3
 5. Breadboard Wire *11
 6. USB cable*1
 
@@ -421,6 +421,114 @@ Circuit Diagram
 
 Code
 ```arduino
+#include <IRremote.h>
+int RECV_PIN = 11;
+int LED1 = 2;
+int LED2 = 3;
+int LED3 = 4;
+
+long on1  = 0x40BF7A85;
+long off1 = 0x40BFBA45;
+long on2 = 0x40BF7887;
+long off2 = 0x40BF52AD;
+long on3 = 0x40BF926D;
+long off3 = 0x40BF50AF;
+
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+// Dumps out the decode_results structure.
+// Call this after IRrecv::decode()
+// void * to work around compiler issue
+//void dump(void *v) {
+//  decode_results *results = (decode_results *)v
+void dump(decode_results *results) {
+  int count = results->rawlen;
+  if (results->decode_type == UNKNOWN) 
+    {
+     Serial.println("Could not decode message");
+    } 
+  else 
+   {
+    if (results->decode_type == NEC) 
+      {
+       Serial.print("Decoded NEC: ");
+      } 
+    else if (results->decode_type == SONY) 
+      {
+       Serial.print("Decoded SONY: ");
+      } 
+    else if (results->decode_type == RC5) 
+      {
+       Serial.print("Decoded RC5: ");
+      } 
+    else if (results->decode_type == RC6) 
+      {
+       Serial.print("Decoded RC6: ");
+      }
+     Serial.print(results->value, HEX);
+     Serial.print(" (");
+     Serial.print(results->bits, DEC);
+     Serial.println(" bits)");
+   }
+     Serial.print("Raw (");
+     Serial.print(count, DEC);
+     Serial.print("): ");
+ for (int i = 0; i < count; i++) 
+     {
+      if ((i % 2) >= 1) {
+      Serial.print(results->rawbuf[i]*USECPERTICK, DEC);
+     } 
+    else  
+     {
+      Serial.print(-(int)results->rawbuf[i]*USECPERTICK, DEC);
+     }
+    Serial.print(" ");
+     }
+      Serial.println("");
+     }
+void setup()
+ {
+  pinMode(RECV_PIN, INPUT);   
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  
+  pinMode(13, OUTPUT);
+  Serial.begin(9600);
+   irrecv.enableIRIn(); // Start the receiver
+ }
+int on =0;
+unsigned long last = millis();
+void loop() 
+{
+  if (irrecv.decode(&results)) 
+   {
+    // If it's been at least 1/4 second since the last
+    // IR received, toggle the relay
+    if (millis() - last > 250) 
+      {
+         on =  ! on;
+//        digitalWrite(8, on ? HIGH : LOW);
+        digitalWrite(13, on ? HIGH: LOW);
+       dump(&results);
+      }
+    if (results.value == on1 )
+       digitalWrite(LED1, HIGH);
+    if (results.value == off1 )
+       digitalWrite(LED1, LOW); 
+    if (results.value == on2 )
+       digitalWrite(LED2, HIGH);
+    if (results.value == off2 )
+       digitalWrite(LED2, LOW); 
+    if (results.value == on3 )
+       digitalWrite(LED3, HIGH);
+    if (results.value == off3 )
+       digitalWrite(LED3, LOW);
+        
+    last = millis();      
+irrecv.resume(); // Receive the next value
+  }
+}
 
 ```
 
