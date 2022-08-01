@@ -1183,8 +1183,101 @@ void loop() {
 
 ***
 
+### Experiment 6 -MIT App Inventor + ESP8266
+
+![1shHv_3102_1641460068](https://user-images.githubusercontent.com/77291059/182179316-7b77ae4c-c024-46fb-aafb-09682d303061.png)
+
+#### What is MIT App Inventor
+MIT App Inventor is a web application integrated development environment for creating Mobile Apps originally provided by Google, and now maintained by the Massachusetts Institute of Technology.
+
+#### Components Required
+1. ESP8266 board
+2. HC-5 Blutooth module
+3. Breadboard
+4. LED's
+5. jumper wires
+6. 220Ω Resistor*3
+
+#### code
+
+```ino
+// --------------------------------------------------
+//
+// Code for control of ESP12E and Hc5 module through MIT inventor app (Bluetooth). 
+// device used for tests: ESP12E
+// 
+// App on phone has three buttons:
+// Button 1: 11 for ON and 10 for OFF
+// Button 2: 21 for ON and 20 for OFF
+// Button 3: 31 for ON and 30 for OFF
+//
+//
+//
+// --------------------------------------------------
 
 
+
+
+
+// init PINs: assign any pin on ESP32
+int led_pin_1 = 16;
+int led_pin_2 = 0;
+int led_pin_3 = 2;
+     
+
+// Parameters for Bluetooth interface
+int incoming;
+
+void setup() {
+  Serial.begin(9200);
+  
+
+  pinMode (led_pin_1, OUTPUT);
+  pinMode (led_pin_2, OUTPUT);
+  pinMode (led_pin_3, OUTPUT);
+}
+
+void loop() {
+  
+  // -------------------- Receive Bluetooth signal ----------------------
+  if (Serial.available()) 
+  {
+    incoming = Serial.read(); //Read what we receive 
+
+    // separate button ID from button value -> button ID is 10, 20, 30, etc, value is 1 or 0
+    int button = floor(incoming / 10);
+    int value = incoming % 10;
+    
+    switch (button) {
+      case 1:  
+        Serial.print("Button 1:"); Serial.println(value);
+        digitalWrite(led_pin_1, value);
+        
+        break;
+      case 2:  
+        Serial.print("Button 2:"); Serial.println(value);
+        digitalWrite(led_pin_2, value);
+        
+        break;
+      case 3:  
+        Serial.print("Button 3:"); Serial.println(value);
+        digitalWrite(led_pin_3, value);
+        break;
+    }
+  }
+}
+```
+#### NOTE
+initially the code was designed for ESP32 Wroom module which has blutooth inbuilt, here i'm using an esp8266 module which does not have blutooth. to overcome this I am using HC-5 blutooth module connected to the RX & TX pin of the ESP8266 module, some edit have been doen to the arduino program in order to this work. 
+
+
+![Bluetooth Interfacing with NoeMCU](https://user-images.githubusercontent.com/77291059/182188997-e09db681-0214-4142-aa6b-ee7d3efbd84e.png)
+
+#### Output
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JqY4JAPbeU0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+***
 
 
 
